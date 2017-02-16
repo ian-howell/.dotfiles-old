@@ -8,6 +8,10 @@ Plug 'fatih/vim-go'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 
+Plug 'airblade/vim-gitgutter'
+"Make Git gutter work faster
+set updatetime=250
+
 Plug 'tpope/vim-fugitive'
 nnoremap <F5> :Gstatus<CR>
 nnoremap <F6> :Gvdiff<CR>
