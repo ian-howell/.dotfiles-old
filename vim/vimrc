@@ -1,6 +1,8 @@
 " Plugins
 call plug#begin()
 
+Plug 'altercation/vim-colors-solarized'
+
 call plug#end()
 "End Plugins
 
@@ -11,7 +13,8 @@ let mapleader=" "|              "Set leader key to the spacebar
 "===[ Colors ]==="
 syntax enable
 
-colorscheme torte
+let g:solarized_termcolors=256
+colorscheme solarized
 set background=dark
 
 

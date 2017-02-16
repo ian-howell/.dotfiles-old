@@ -26,7 +26,7 @@ alias cp="cp -i"
 alias die="sudo poweroff now"
 
 # Vim auto window splitter
-if [ -a /usr/bin/nvim ]
+if [ -e /usr/bin/nvim ]
 then
   alias vim="nvim -O"
 else
