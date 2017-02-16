@@ -108,6 +108,12 @@ execute "set colorcolumn=".join(range(80,335), ',')|   "Discolor every column pa
 set splitright       "Put vertical splits on the right rather than the left
 set splitbelow       "Put horizontal splits on the bottom rather than the top
 
+"Easily move between windows
+nnoremap <C-h> <C-w>h
+nnoremap <C-j> <C-w>j
+nnoremap <C-k> <C-w>k
+nnoremap <C-l> <C-w>l
+
 
 "===[ Miscellaneous key mappings ]==="
 inoremap jk <ESC>|              "Shortcut from insert to normal mode
