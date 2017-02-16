@@ -5,7 +5,7 @@ Plug 'altercation/vim-colors-solarized'
 
 Plug 'tpope/vim-fugitive'
 nnoremap <F5> :Gstatus<CR>
-nnoremap <F6> :Gdiff<CR>
+nnoremap <F6> :Gvdiff %<CR>
 nnoremap <F7> :Gadd<CR>
 nnoremap <F8> :Gcommit<CR>
 
