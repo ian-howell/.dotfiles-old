@@ -3,6 +3,12 @@ call plug#begin()
 
 Plug 'altercation/vim-colors-solarized'
 
+Plug 'tpope/vim-fugitive'
+nnoremap <F5> :Gstatus<CR>
+nnoremap <F6> :Gdiff<CR>
+nnoremap <F7> :Gadd<CR>
+nnoremap <F8> :Gcommit<CR>
+
 call plug#end()
 "End Plugins
 
