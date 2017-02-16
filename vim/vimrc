@@ -9,6 +9,31 @@ nnoremap <F6> :Gdiff<CR>
 nnoremap <F7> :Gadd<CR>
 nnoremap <F8> :Gcommit<CR>
 
+if has('nvim')
+  Plug 'benekastah/neomake'
+  " Run linter asynchronously upon saving/entering buffer
+  autocmd! BufWritePost * Neomake!
+  " Open error list if they exist
+  let g:neomake_open_list = 2
+
+  " C++ linting
+  let g:neomake_cpp_cpp11_maker = {
+        \ 'exe': 'g++',
+        \ 'args': ['-std=c++11'],
+        \ }
+  let g:neomake_cpp_enabled_makers = ['makeprg', 'cpp11']
+else
+  Plug 'scrooloose/syntastic'
+  " Syntastic suggested defaults
+  set statusline+=%#warningmsg#
+  set statusline+=%{SyntasticStatuslineFlag()}
+  set statusline+=%*
+  let g:syntastic_always_populate_loc_list = 1
+  let g:syntastic_auto_loc_list = 1
+  let g:syntastic_check_on_open = 1
+  let g:syntastic_check_on_wq = 0
+end
+
 call plug#end()
 "End Plugins
 
