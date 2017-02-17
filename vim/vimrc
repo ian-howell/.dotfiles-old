@@ -197,8 +197,6 @@ augroup END
 "===[ Tags ]==="
 autocmd! BufWrite * call system('ctags -R -f ./.git/tags *')
 
-
-"===[ Swap files ]==="
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
+set backupdir=$HOME/.vim/backup
+set directory=$HOME/.vim/swap
+set undodir=$HOME/.vim/undo
