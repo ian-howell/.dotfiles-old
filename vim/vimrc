@@ -50,6 +50,7 @@ if has('nvim') && has('python3')
   let g:deoplete#enable_at_startup = 1
 
   Plug 'Rip-Rip/clang_complete'
+  let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
   Plug 'zchee/deoplete-go'
   Plug 'zchee/deoplete-jedi'
 end
