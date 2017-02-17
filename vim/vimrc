@@ -191,3 +191,7 @@ augroup VisibleNaughtiness
     autocmd BufEnter  *           set nolist
     autocmd BufEnter  *       endif
 augroup END
+
+
+"===[ Tags ]==="
+autocmd! BufWrite * call system('ctags -R -f ./.git/tags *')
