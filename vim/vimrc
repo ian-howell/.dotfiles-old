@@ -8,6 +8,7 @@ Plug 'fatih/vim-go'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
+Plug 'ervandew/supertab'
 
 Plug 'airblade/vim-gitgutter'
 "Make Git gutter work faster
