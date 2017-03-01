@@ -164,6 +164,9 @@ inoremap <F1> <Esc>
 
 inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
 
+"Compile latex
+nnoremap <Leader>tex :!pdflatex %<CR>
+
 "===[ Statusline ]==="
 set laststatus=2                             "Always show the status line
 set statusline=%<%f\ %y%m%r%=%-14.(%l,%c%V%)\ %P
