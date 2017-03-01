@@ -94,6 +94,13 @@ inoremap # X#|       "Because indent is retarded with Python comments...
 "===[ Line and column display settings ]==="
 "== Lines =="
 set nowrap             "Don't word wrap
+"Unless it's a LaTeX or txt file
+augroup line_wrapper
+    autocmd!
+    autocmd FileType tex,text set wrap
+    nnoremap j gj
+    nnoremap k gk
+augroup END
 set textwidth=0        "Don't automatically insert linebreaks
 set relativenumber     "Give a relative number of lines from the cursor
 set number             "Show the cursor's current line
