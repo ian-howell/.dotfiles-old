@@ -20,6 +20,7 @@ nnoremap <F7> :Gwrite<CR>
 nnoremap <F8> :Gcommit<CR>
 
 if has('nvim')
+  "Neomake
   Plug 'benekastah/neomake'
   " Run linter asynchronously upon saving/entering buffer
   autocmd! BufWritePost * Neomake!
@@ -32,6 +33,22 @@ if has('nvim')
         \ 'args': ['-std=c++11'],
         \ }
   let g:neomake_cpp_enabled_makers = ['makeprg', 'cpp11']
+
+  "Autocompletion
+  if has('nvim') && has('python3')
+    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+    let g:deoplete#enable_at_startup = 1
+
+    " deoplete tab-complete
+    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
+    Plug 'Rip-Rip/clang_complete'
+    let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
+    Plug 'zchee/deoplete-go'
+    Plug 'zchee/deoplete-jedi'
+  else
+    Plug 'ervandew/supertab'
+  end
 else
   Plug 'scrooloose/syntastic'
   " Syntastic suggested defaults
@@ -42,21 +59,6 @@ else
   let g:syntastic_auto_loc_list = 1
   let g:syntastic_check_on_open = 1
   let g:syntastic_check_on_wq = 0
-end
-
-if has('nvim') && has('python3')
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-
-  " deoplete tab-complete
-  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-  Plug 'Rip-Rip/clang_complete'
-  let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
-  Plug 'zchee/deoplete-go'
-  Plug 'zchee/deoplete-jedi'
-else
-  Plug 'ervandew/supertab'
 end
 
 call plug#end()
