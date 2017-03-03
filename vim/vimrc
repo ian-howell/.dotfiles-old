@@ -98,10 +98,11 @@ set nowrap             "Don't word wrap
 augroup line_wrapper
     autocmd!
     autocmd FileType tex,text set wrap
-    nnoremap j gj
-    nnoremap k gk
-    vnoremap j gj
-    vnoremap k gk
+    autocmd FileType tex,text nnoremap j gj
+    autocmd FileType tex,text nnoremap k gk
+    autocmd FileType tex,text vnoremap j gj
+    autocmd FileType tex,text vnoremap k gk
+    autocmd FileType tex autocmd BufWritePost * :silent execute "!pdflatex " . bufname("%") . " > /dev/null"
 augroup END
 set textwidth=0        "Don't automatically insert linebreaks
 set relativenumber     "Give a relative number of lines from the cursor
