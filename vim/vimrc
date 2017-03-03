@@ -49,6 +49,15 @@ if has('nvim')
   else
     Plug 'ervandew/supertab'
   end
+
+  " Markdown-composer
+  function! BuildComposer(info)
+    if a:info.status != 'unchanged' || a:info.force
+      !cargo build --release
+    endif
+  endfunction
+
+  Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 else
   Plug 'scrooloose/syntastic'
   " Syntastic suggested defaults
