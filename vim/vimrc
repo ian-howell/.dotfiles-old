@@ -8,7 +8,6 @@ Plug 'fatih/vim-go'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
-Plug 'ervandew/supertab'
 
 Plug 'airblade/vim-gitgutter'
 "Make Git gutter work faster
@@ -49,10 +48,15 @@ if has('nvim') && has('python3')
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
   let g:deoplete#enable_at_startup = 1
 
+  " deoplete tab-complete
+  inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
+
   Plug 'Rip-Rip/clang_complete'
   let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
   Plug 'zchee/deoplete-go'
   Plug 'zchee/deoplete-jedi'
+else
+  Plug 'ervandew/supertab'
 end
 
 call plug#end()
