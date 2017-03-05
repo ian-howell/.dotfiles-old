@@ -35,9 +35,12 @@ for file in $files; do
   ln -s $dir/$file ~/.$file
 done
 
-# Create the config directory
+# Create the vim directories
 echo -n "Creating vim swap/undo/backup directories ..."
 mkdir -p vim/undo
 mkdir -p vim/swap
 mkdir -p vim/backup
 echo "done"
+
+# Point nvim at vim directory
+ln -s $dir/vim $dir/config/nvim

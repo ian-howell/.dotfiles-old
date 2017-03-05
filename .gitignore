@@ -4,3 +4,6 @@ vim/undo/
 vim/swap/
 vim/.netrwhist
 vim/plugged/
+
+# Changes to the config directory
+config/
