@@ -215,6 +215,7 @@ command! Wq wq
 "===[ Folds ]==="
 set foldmethod=syntax           "Create folds on C-likes
 set foldlevel=20                 "Start vim with all folds open
+autocmd FileType python set foldmethod=indent
 
 
 "===[ Show undesirable hidden characters ]==="
