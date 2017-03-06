@@ -23,7 +23,3 @@ fi
 
 # Rust path
 export PATH="$HOME/.cargo/bin:$PATH"
-
-# Go path
-export GOPATH="/usr/bin/go"
-export PATH="$PATH:$GOROOT/bin:$GOPATH/bin"

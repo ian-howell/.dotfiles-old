@@ -4,7 +4,6 @@ call plug#begin()
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'altercation/vim-colors-solarized'
-Plug 'fatih/vim-go'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
@@ -44,7 +43,7 @@ if has('nvim')
 
     Plug 'Rip-Rip/clang_complete'
     let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
-    Plug 'zchee/deoplete-go'
+
     Plug 'zchee/deoplete-jedi'
   else
     Plug 'ervandew/supertab'
