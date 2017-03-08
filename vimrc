@@ -7,6 +7,7 @@ Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
+Plug 'wellle/targets.vim'
 
 Plug 'airblade/vim-gitgutter'
 "Make Git gutter work faster
