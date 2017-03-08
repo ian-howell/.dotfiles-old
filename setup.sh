@@ -41,6 +41,3 @@ mkdir -p vim/undo
 mkdir -p vim/swap
 mkdir -p vim/backup
 echo "done"
-
-# Point nvim at vim directory
-ln -s $dir/vim $dir/config/nvim
