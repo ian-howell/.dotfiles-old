@@ -51,13 +51,15 @@ if has('nvim')
   end
 
   " Markdown-composer
+  if executable('cargo')
   function! BuildComposer(info)
     if a:info.status != 'unchanged' || a:info.force
       !cargo build --release
     endif
   endfunction
-
   Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
+  endif
+
 else
   Plug 'scrooloose/syntastic'
   " Syntastic suggested defaults
