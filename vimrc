@@ -38,6 +38,7 @@ if has('nvim')
   if has('python3')
     Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
     let g:deoplete#enable_at_startup = 1
+    let g:deoplete#disable_auto_complete = 0
 
     " deoplete tab-complete
     inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
@@ -191,6 +192,9 @@ inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
 
 "Compile latex
 nnoremap <Leader>tex :!pdflatex %<CR>
+
+"Remove all trailing whitespace from a file
+nnoremap <Leader>ws :%s/\s\+$//<CR>``
 
 "===[ Statusline ]==="
 set laststatus=2                             "Always show the status line
