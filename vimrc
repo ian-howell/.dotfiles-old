@@ -23,7 +23,10 @@ if has('nvim')
   "Neomake
   Plug 'benekastah/neomake'
   " Run linter asynchronously upon saving/entering buffer
-  autocmd! BufWritePost * Neomake!
+  augroup linter
+    autocmd!
+    autocmd BufWritePost * Neomake!
+  augroup end
   " Open error list if they exist
   let g:neomake_open_list = 2
 
@@ -51,14 +54,6 @@ if has('nvim')
     Plug 'ervandew/supertab'
   end
 
-  " Markdown-composer
-  function! BuildComposer(info)
-    if a:info.status != 'unchanged' || a:info.force
-      !cargo build --release
-    endif
-  endfunction
-
-  Plug 'euclio/vim-markdown-composer', { 'do': function('BuildComposer') }
 else
   Plug 'scrooloose/syntastic'
   " Syntastic suggested defaults
@@ -102,7 +97,7 @@ set expandtab          "Turns tabs into spaces
 set autoindent         "Keep the same indentation level when inserting a new line
 set smartindent        "Add proper indentation for code, eg insert a tab after a '{' character
 
-autocmd FileType make set noexpandtab          "Use tabs in makefiles
+autocmd FileType make setlocal noexpandtab          "Use tabs in makefiles
 
 inoremap # X#|       "Because indent is retarded with Python comments...
 
@@ -113,12 +108,12 @@ set nowrap             "Don't word wrap
 "Unless it's a LaTeX or txt file
 augroup line_wrapper
     autocmd!
-    autocmd FileType tex,text,markdown set wrap
+    autocmd FileType tex,text,markdown setlocal wrap
     autocmd FileType tex,text,markdown nnoremap j gj
     autocmd FileType tex,text,markdown nnoremap k gk
     autocmd FileType tex,text,markdown vnoremap j gj
     autocmd FileType tex,text,markdown vnoremap k gk
-    autocmd FileType tex autocmd BufWritePost * :silent execute "!pdflatex " . bufname("%") . " > /dev/null"
+    autocmd FileType tex autocmd BufWritePost * :silent execute "!pdflatex " . bufname("%") . " > /dev/null &"
 augroup END
 set textwidth=0        "Don't automatically insert linebreaks
 set relativenumber     "Give a relative number of lines from the cursor
@@ -137,13 +132,13 @@ augroup END
 set cursorline
 augroup highlight_follows_focus
     autocmd!
-    autocmd WinEnter * set cursorline
-    autocmd WinLeave * set nocursorline
+    autocmd WinEnter * setlocal cursorline
+    autocmd WinLeave * setlocal nocursorline
 augroup END
 augroup highlight_follows_vim
     autocmd!
-    autocmd FocusGained * set cursorline
-    autocmd FocusLost * set nocursorline
+    autocmd FocusGained * setlocal cursorline
+    autocmd FocusLost * setlocal nocursorline
 augroup END
 
 "== Columns =="
@@ -220,7 +215,10 @@ command! Wq wq
 "===[ Folds ]==="
 set foldmethod=syntax           "Create folds on C-likes
 set foldlevel=20                 "Start vim with all folds open
-autocmd FileType python set foldmethod=indent
+augroup python_indent
+  autocmd!
+  autocmd FileType python setlocal foldmethod=indent
+augroup end
 
 
 "===[ Show undesirable hidden characters ]==="
@@ -229,18 +227,48 @@ exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
 
 augroup VisibleNaughtiness
     autocmd!
-    autocmd BufEnter  *       set list
-    autocmd BufEnter  *.txt   set nolist
-    autocmd BufEnter  *.vp*   set nolist
+    autocmd BufEnter  *       setlocal list
+    autocmd BufEnter  *.txt   setlocal nolist
+    autocmd BufEnter  *.vp*   setlocal nolist
     autocmd BufEnter  *       if !&modifiable
-    autocmd BufEnter  *           set nolist
+    autocmd BufEnter  *           setlocal nolist
     autocmd BufEnter  *       endif
 augroup END
 
 
 "===[ Tags ]==="
-autocmd! BufWrite * call system('ctags -R -f ./.git/tags *')
+command! Maketags !ctags -R .
 
+
+"===[ Backups and Undos ]==="
 set backupdir=$HOME/.vim/backup
 set directory=$HOME/.vim/swap
 set undodir=$HOME/.vim/undo
+
+
+"===[ File navigation ]==="
+"Recursively search current directory
+set path+=**
+
+"Shortcut to find files
+nnoremap <Leader>f :find<space>
+
+"Shortcut to show buffers
+nnoremap <Leader>b :ls<CR>:b<space>
+
+
+"===[ Grep customization ]==="
+set grepprg=grep\ -IHn\ -dskip\ $*\ /dev/null
+command! -nargs=1 GrepAll grep <f-args> **/*
+nnoremap <Leader>gr :grep<space>
+nnoremap <Leader>ga :GrepAll<space>
+" <C-R><C-W> is the word under the cursor. The \b's prevent it from showing up
+" in partial matches
+nnoremap <Leader>gk :GrepAll \b<C-R><C-W>\b<CR>:cw<CR>
+
+"===[ QuickFixList Shortcuts ]==="
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprevious<CR>
+nnoremap <Leader>co :copen<CR>
+nnoremap <Leader>cl :cclose<CR>
+nnoremap <Leader>cr :crewind<CR>
