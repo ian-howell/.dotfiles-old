@@ -1,5 +1,7 @@
 # Use python3 by default
 alias python=python3
+# Because I suck at keyboards
+alias pyhton=python3
 
 # Git aliases
 alias gst="git status"
@@ -8,7 +10,7 @@ alias gbr="git branch"
 alias gdi="git diff"
 
 # You never use ls the way its supposed to be used, so here:
-#	note that this also keeps color
+# note that this also keeps color
 alias ls='ls --color=auto -lh'
 alias lsa="ls -a"
 
@@ -29,8 +31,10 @@ alias die="sudo poweroff now"
 if [ -e /usr/bin/nvim ]
 then
   alias vim="nvim -O"
+  alias cim="nvim -O"
 else
   alias vim="vim -O"
+  alias cim="vim -O"
 fi
 
 # Open in default without needing that dumb hyphen
@@ -40,5 +44,5 @@ alias dopen="xdg-open"
 alias :q=exit
 alias :wq=exit
 
-# Quickly create a note with today's date
-alias note="mkdir \"$(date +%G%m%d)\""
+# Ignore binaries/directories
+alias grep="grep -IHdskip --color=auto"
