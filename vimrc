@@ -261,7 +261,7 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 "===[ Grep customization ]==="
 set grepprg=grep\ -IHn\ -dskip\ $*\ /dev/null
-command! -nargs=1 GrepAll grep <f-args> **/*
+command! -nargs=1 GrepAll grep <f-args> * **/*
 nnoremap <Leader>gr :grep<space>
 nnoremap <Leader>ga :GrepAll<space>
 " <C-R><C-W> is the word under the cursor. The \b's prevent it from showing up
