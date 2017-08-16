@@ -85,9 +85,6 @@ set background=dark
 
 "===[ Search behaviour ]==="
 set incsearch                        "Lookahead as search pattern is specified
-set ignorecase                       "Ignore case in all searches...
-set smartcase                        "...unless uppercase letters are used
-
 set hlsearch                         "Highlight all matches
 nnoremap <Leader>n :nohlsearch<CR>|      "Clear search highlights with Escape
 
@@ -113,9 +110,8 @@ augroup line_wrapper
     autocmd FileType tex,text,markdown setlocal wrap
     autocmd FileType tex,text,markdown nnoremap j gj
     autocmd FileType tex,text,markdown nnoremap k gk
-    autocmd FileType tex,text,markdown vnoremap j gj
-    autocmd FileType tex,text,markdown vnoremap k gk
-    autocmd FileType tex autocmd BufWritePost * :silent execute "!pdflatex " . bufname("%") . " > /dev/null &"
+    autocmd FileType tex,text,markdown xnoremap j gj
+    autocmd FileType tex,text,markdown xnoremap k gk
 augroup END
 set textwidth=0        "Don't automatically insert linebreaks
 set relativenumber     "Give a relative number of lines from the cursor
@@ -152,11 +148,8 @@ execute "set colorcolumn=".join(range(80,335), ',')|   "Discolor every column pa
 set splitright       "Put vertical splits on the right rather than the left
 set splitbelow       "Put horizontal splits on the bottom rather than the top
 
-"Easily move between windows
-nnoremap <C-h> <C-w>h
-nnoremap <C-j> <C-w>j
-nnoremap <C-k> <C-w>k
-nnoremap <C-l> <C-w>l
+"Mapping for more convenient 'window mode'
+nnoremap <Leader>w <C-w>
 
 
 "===[ Miscellaneous key mappings ]==="
@@ -175,12 +168,10 @@ nnoremap <Leader>s :source ~/.vimrc<CR>|     "Quickly source vimrc
 inoremap {{ {<CR>}<ESC>kA|                   "Fast bracketing
 
 nnoremap Y y$|                  "Yank to EOL like it should
-nnoremap <Leader>y "+yy|        "Copy to system clipboard from normal mode
-vnoremap <Leader>y "+y|         "Copy to system clipboard from visual mode
+nnoremap <Leader>y "+y|         "Copy to system clipboard from normal mode
+xnoremap <Leader>y "+y|         "Copy to system clipboard from visual mode
 nnoremap <Leader>p "+p|         "Paste from system clipboard in normal mode
-vnoremap <Leader>p "+p|         "Paste from system clipboard in visual mode
-
-nnoremap <Leader>w :w<CR>|      "Quickly save from normal mode
+xnoremap <Leader>p "+p|         "Paste from system clipboard in visual mode
 
 nnoremap <F1> <Esc>              "Disable help screen on F1
 inoremap <F1> <Esc>
@@ -215,11 +206,11 @@ command! Wq wq
 
 
 "===[ Folds ]==="
-set foldmethod=syntax           "Create folds on C-likes
+set foldmethod=syntax            "Create folds on C-likes
 set foldlevel=20                 "Start vim with all folds open
 augroup python_indent
   autocmd!
-  autocmd FileType python setlocal foldmethod=indent
+  autocmd FileType python,html setlocal foldmethod=indent
 augroup end
 
 
