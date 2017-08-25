@@ -265,3 +265,9 @@ nnoremap <Leader>cp :cprevious<CR>
 nnoremap <Leader>co :copen<CR>
 nnoremap <Leader>cl :cclose<CR>
 nnoremap <Leader>cr :crewind<CR>
+
+"===[ Skeleton files ]==="
+" For now, I'll only support my LaTeX skeleton (provided by Illya Starikov)
+augroup skeletons
+  autocmd BufNewFile *.tex 0r ~/.vim/skeletons/skeleton.tex
+augroup END
