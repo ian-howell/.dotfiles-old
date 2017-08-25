@@ -1,30 +1,26 @@
-\RequirePackage[l2tabu, orthodox]{nag}
-\documentclass[12pt]{article}
+%----------------------------------------------------------------------------------------
+% PACKAGES AND DOCUMENT CONFIGURATIONS
+%----------------------------------------------------------------------------------------
 
-\usepackage{amssymb,amsmath,verbatim,graphicx,microtype,units,booktabs}
-\usepackage[margin=10pt, font=small, labelfont=bf, labelsep=endash]{caption}
-\usepackage[colorlinks=true, pdfborder={0 0 0}]{hyperref}
-\usepackage[utf8]{inputenc}
+\documentclass{article}
 
-\usepackage{xcolor}
-\newcommand{\shellcmd}[1]{\texttt{\colorbox{gray!30}{#1}}} % highlight shell or code commands
-\newcommand{\todo}[2]{\textbf{\colorbox{red!50}{#1}}{\footnote{#2}}} % placeholder for something to do
-\newcommand{\gray}{\rowcolor[gray]{.9}} % format a table row to make it more visible
+\usepackage{siunitx} % Provides the \SI{}{} and \si{} command for typesetting SI units
+\usepackage{graphicx} % Required for the inclusion of images
+\usepackage{amsmath} % Required for some math elements
 
-\usepackage[left=1.15in, right=1.15in]{geometry}
-\usepackage{titleps}
-\newpagestyle{main}{
-    \setheadrule{.4pt}
-    \sethead{\sectiontitle}
-            {}
-            {Illya Starikov}
-}
-\pagestyle{main}
+%----------------------------------------------------------------------------------------
+% DOCUMENT INFORMATION
+%----------------------------------------------------------------------------------------
 
-% *-------------------- Modify This As Needed --------------------* %
-% \usepackage[top=0.5in, bottom=0.5in, left=0.5in, right=0.5in]{geometry}
-% \pagestyle{empty}
+\title{TITLE \\ \large SUBTITLE} % Title
+\author{Ian \textsc{Howell}} % Author name
 
-\title{\todo{Title}{Insert title here.}}
-\date{\today}
-\author{Ian Howell}
+\begin{document}
+
+\maketitle
+
+
+% BODY OF DOCUMENT BEGINS HERE
+
+
+\end{document}
