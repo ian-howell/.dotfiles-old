@@ -22,6 +22,8 @@ nnoremap <F8> :Gcommit<CR>
 
 Plug 'ervandew/supertab'
 
+Plug 'romainl/vim-cool'
+
 call plug#end()
 "End Plugins
 
@@ -31,6 +33,7 @@ let mapleader=" "|              "Set leader key to the spacebar
 
 "===[ Sane backspace ]==="
 set backspace=indent,eol,start
+
 
 "===[ Colors ]==="
 syntax enable
@@ -44,8 +47,6 @@ endif
 
 "===[ Search behaviour ]==="
 set incsearch                        "Lookahead as search pattern is specified
-set hlsearch                         "Highlight all matches
-nnoremap <Leader>n :nohlsearch<CR>|      "Clear search highlights with Escape
 
 "===[ Tab behaviour ]==="
 set tabstop=2          "Tabs are equal to 2 spaces
