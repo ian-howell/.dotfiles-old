@@ -218,8 +218,8 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 "===[ Grep customization ]==="
 set grepprg=grep\ -nrsHI
-nnoremap <Leader>/ :AsyncRun! -post=copen -program=grep<space>
-nnoremap <Leader>* :AsyncRun! -post=copen -program=grep <cword><CR>
+nnoremap <Leader>/ :AsyncRun! -post=botright\ copen -program=grep<space>
+nnoremap <Leader>* :AsyncRun! -post=botright\ copen -program=grep <cword><CR>
 
 
 "===[ QuickFixList Shortcuts ]==="
@@ -238,4 +238,3 @@ augroup END
 set wildmenu
 set wildmode=full
 set noswapfile
-set mouse=a
