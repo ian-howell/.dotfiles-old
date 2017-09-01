@@ -49,8 +49,9 @@ endif
 set incsearch                        "Lookahead as search pattern is specified
 
 "===[ Tab behaviour ]==="
-set tabstop=2          "Tabs are equal to 2 spaces
-set shiftwidth=2       "Indent/outdent by 2 columns
+set tabstop=4          "Tabs are equal to 2 spaces
+set shiftwidth=4       "Indent/outdent by 2 columns
+set shiftround         "Indents always land on a multiple of shiftwidth
 set smarttab           "Backspace deletes a shiftwidth's worth of spaces
 set expandtab          "Turns tabs into spaces
 set autoindent         "Keep the same indentation level when inserting a new line
@@ -237,3 +238,8 @@ nnoremap <Leader>qr :crewind<CR>
 augroup skeletons
   autocmd BufNewFile *.tex 0r ~/.vim/skeletons/skeleton.tex
 augroup END
+
+
+"===[ Unsorted ]==="
+set wildmenu
+set wildmode=full
