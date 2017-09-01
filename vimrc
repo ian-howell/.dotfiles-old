@@ -218,8 +218,8 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 "===[ Grep customization ]==="
 set grepprg=grep\ -nrsHI
-nnoremap <Leader>/ :AsyncRun! -program=grep<space>
-nnoremap <Leader>* :AsyncRun! -program=grep <cword><CR>
+nnoremap <Leader>/ :AsyncRun! -post=copen -program=grep<space>
+nnoremap <Leader>* :AsyncRun! -post=copen -program=grep <cword><CR>
 
 
 "===[ QuickFixList Shortcuts ]==="
