@@ -113,6 +113,10 @@ if ! shopt -oq posix; then
   fi
 fi
 
+# use a *real* editor
+export VISUAL=vim
+export EDITOR="$VISUAL"
+
 # Kattis C and C++ compile command
 function kgcc { gcc -g -O2 -static -std=gnu99 "$@" -lm; }
 function kg++ { g++ -g -O2 -static -std=gnu++11 "$@"; }
