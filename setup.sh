@@ -36,8 +36,6 @@ for file in $files; do
 done
 
 # Create the vim directories
-echo -n "Creating vim swap/undo/backup directories ..."
+echo -n "Creating vim backup directory ..."
 mkdir -p vim/undo
-mkdir -p vim/swap
-mkdir -p vim/backup
 echo "done"

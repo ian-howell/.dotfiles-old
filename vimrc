@@ -194,9 +194,8 @@ nnoremap <Leader>tj :tjump /
 nnoremap <Leader>tp :ptjump /
 
 
-"===[ Backups and Undos ]==="
-set backupdir=$HOME/.vim/backup
-set directory=$HOME/.vim/swap
+"===[ Persistant Undos ]==="
+set undofile
 set undodir=$HOME/.vim/undo
 
 
@@ -205,7 +204,9 @@ set undodir=$HOME/.vim/undo
 set path+=**
 
 "Shortcut to find files
-nnoremap <Leader>f :find<space>
+nnoremap <Leader>ff :find *
+nnoremap <Leader>fs :sfind *
+nnoremap <Leader>fv :vert sfind *
 
 "Shortcut to show buffers
 nnoremap <Leader>b :ls<CR>:b<space>
