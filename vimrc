@@ -3,7 +3,6 @@ call plug#begin()
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
@@ -19,54 +18,7 @@ nnoremap <F6> :Gvdiff<CR>
 nnoremap <F7> :Gwrite<CR>
 nnoremap <F8> :Gcommit<CR>
 
-if has('nvim')
-  "Neomake
-  Plug 'benekastah/neomake'
-  " Run linter asynchronously upon saving/entering buffer
-  augroup linter
-    autocmd!
-    autocmd BufWritePost * Neomake!
-  augroup end
-  " Open error list if they exist
-  let g:neomake_open_list = 2
-
-  " C++ linting
-  let g:neomake_cpp_cpp11_maker = {
-        \ 'exe': 'g++',
-        \ 'args': ['-std=c++11'],
-        \ }
-  let g:neomake_cpp_enabled_makers = ['makeprg', 'cpp11']
-
-  "Autocompletion
-  if has('python3')
-    Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-    let g:deoplete#enable_at_startup = 1
-    let g:deoplete#disable_auto_complete = 0
-
-    " deoplete tab-complete
-    inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
-    Plug 'Rip-Rip/clang_complete'
-    let g:clang_library_path='/usr/lib/llvm-3.6/lib/'
-
-    Plug 'zchee/deoplete-jedi'
-  else
-    Plug 'ervandew/supertab'
-  end
-
-else
-  Plug 'scrooloose/syntastic'
-  " Syntastic suggested defaults
-  set statusline+=%#warningmsg#
-  set statusline+=%{SyntasticStatuslineFlag()}
-  set statusline+=%*
-  let g:syntastic_always_populate_loc_list = 1
-  let g:syntastic_auto_loc_list = 1
-  let g:syntastic_check_on_open = 1
-  let g:syntastic_check_on_wq = 0
-
-  Plug 'ervandew/supertab'
-end
+Plug 'ervandew/supertab'
 
 call plug#end()
 "End Plugins
@@ -75,13 +27,11 @@ call plug#end()
 let mapleader=" "|              "Set leader key to the spacebar
 
 
+"===[ Sane backspace ]==="
+set backspace=indent,eol,start
+
 "===[ Colors ]==="
 syntax enable
-
-let g:solarized_termcolors=256
-colorscheme solarized
-set background=dark
-
 
 "===[ Search behaviour ]==="
 set incsearch                        "Lookahead as search pattern is specified
@@ -267,7 +217,7 @@ nnoremap <Leader>cl :cclose<CR>
 nnoremap <Leader>cr :crewind<CR>
 
 "===[ Skeleton files ]==="
-" For now, I'll only support my LaTeX skeleton (provided by Illya Starikov)
+" For now, I'll only support my LaTeX skeleton
 augroup skeletons
   autocmd BufNewFile *.tex 0r ~/.vim/skeletons/skeleton.tex
 augroup END
