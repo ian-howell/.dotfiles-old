@@ -211,20 +211,26 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 
 "===[ Grep customization ]==="
-set grepprg=grep\ -IHn\ -dskip\ $*\ /dev/null
-command! -nargs=1 GrepAll grep <f-args> * **/*
-nnoremap <Leader>gr :grep<space>
-nnoremap <Leader>ga :GrepAll<space>
-" <C-R><C-W> is the word under the cursor. The \b's prevent it from showing up
-" in partial matches
-nnoremap <Leader>gk :GrepAll \b<C-R><C-W>\b<CR>:cw<CR>
+set grepprg=grep\ -nrsH
+command! -nargs=+ -complete=file_in_path -bar Grep silent! grep! <args> | redraw!
+nnoremap <Leader>/ :Grep<space>
+nnoremap <Leader>* :Grep <C-R><C-W><CR>
 
 "===[ QuickFixList Shortcuts ]==="
-nnoremap <Leader>cn :cnext<CR>
-nnoremap <Leader>cp :cprevious<CR>
-nnoremap <Leader>co :copen<CR>
-nnoremap <Leader>cl :cclose<CR>
-nnoremap <Leader>cr :crewind<CR>
+nnoremap <Leader>qn :cnext<CR>
+nnoremap <Leader>qp :cprevious<CR>
+nnoremap <Leader>qo :copen<CR>
+nnoremap <Leader>ql :cclose<CR>
+nnoremap <Leader>qr :crewind<CR>
+
+" TODO: Uncomment if this isn't going to conflict with syntax checkers
+" augroup quickfix
+"   autocmd!
+"   " automatic location/quickfix window
+"   autocmd QuickFixCmdPost [^l]* cwindow
+"   autocmd QuickFixCmdPost    l* lwindow
+"   autocmd VimEnter            * cwindow
+" augroup END
 
 "===[ Skeleton files ]==="
 " For now, I'll only support my LaTeX skeleton
