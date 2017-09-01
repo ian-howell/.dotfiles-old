@@ -24,6 +24,10 @@ Plug 'ervandew/supertab'
 
 Plug 'romainl/vim-cool'
 
+if v:version >= 800
+    Plug 'skywind3000/asyncrun.vim'
+endif
+
 call plug#end()
 "End Plugins
 
@@ -141,7 +145,7 @@ inoremap <F1> <Esc>
 inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
 
 "Compile latex
-nnoremap <Leader>tex :!pdflatex %<CR>
+nnoremap <Leader>tex :AsyncRun pdflatex %<CR>
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
@@ -213,26 +217,15 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 
 "===[ Grep customization ]==="
-set grepprg=grep\ -nrsH
-command! -nargs=+ -complete=file_in_path -bar Grep silent! grep! <args> | redraw!
-nnoremap <Leader>/ :Grep<space>
-nnoremap <Leader>* :Grep <C-R><C-W><CR>
+set grepprg=grep\ -nrsHI
+nnoremap <Leader>/ :AsyncRun! -program=grep <space>
+nnoremap <Leader>* :AsyncRun! -program=grep <cword><CR>
+
 
 "===[ QuickFixList Shortcuts ]==="
-nnoremap <Leader>qn :cnext<CR>
-nnoremap <Leader>qp :cprevious<CR>
-nnoremap <Leader>qo :copen<CR>
-nnoremap <Leader>ql :cclose<CR>
-nnoremap <Leader>qr :crewind<CR>
-
-" TODO: Uncomment if this isn't going to conflict with syntax checkers
-" augroup quickfix
-"   autocmd!
-"   " automatic location/quickfix window
-"   autocmd QuickFixCmdPost [^l]* cwindow
-"   autocmd QuickFixCmdPost    l* lwindow
-"   autocmd VimEnter            * cwindow
-" augroup END
+nnoremap <Leader>cn :cnext<CR>
+nnoremap <Leader>cp :cprevious<CR>
+nnoremap <Leader>cc :call asyncrun#quickfix_toggle(8)<cr>
 
 "===[ Skeleton files ]==="
 " For now, I'll only support my LaTeX skeleton
@@ -244,3 +237,4 @@ augroup END
 "===[ Unsorted ]==="
 set wildmenu
 set wildmode=full
+set noswapfile
