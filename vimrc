@@ -192,7 +192,7 @@ augroup END
 
 
 "===[ Tags ]==="
-nnoremap <Leader>tt :!ctags -Ra .<CR>
+nnoremap <Leader>tt :AsyncRun ctags -Ra .<CR>
 set tags=./tags;,tags;
 nnoremap <Leader>tj :tjump /
 nnoremap <Leader>tp :ptjump /
@@ -218,7 +218,7 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 "===[ Grep customization ]==="
 set grepprg=grep\ -nrsHI
-nnoremap <Leader>/ :AsyncRun! -program=grep <space>
+nnoremap <Leader>/ :AsyncRun! -program=grep<space>
 nnoremap <Leader>* :AsyncRun! -program=grep <cword><CR>
 
 
@@ -238,3 +238,4 @@ augroup END
 set wildmenu
 set wildmode=full
 set noswapfile
+set mouse=a
