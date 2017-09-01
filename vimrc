@@ -131,6 +131,7 @@ nnoremap Y y$|                  "Yank to EOL like it should
 nnoremap <Leader>y "+y|         "Copy to system clipboard from normal mode
 xnoremap <Leader>y "+y|         "Copy to system clipboard from visual mode
 nnoremap <Leader>p "+p|         "Paste from system clipboard in normal mode
+nnoremap <Leader>P "+P|         "Paste from system clipboard in normal mode
 xnoremap <Leader>p "+p|         "Paste from system clipboard in visual mode
 
 nnoremap <F1> <Esc>              "Disable help screen on F1
@@ -166,12 +167,8 @@ command! Wq wq
 
 
 "===[ Folds ]==="
-set foldmethod=syntax            "Create folds on C-likes
-set foldlevel=20                 "Start vim with all folds open
-augroup python_indent
-  autocmd!
-  autocmd FileType python,html setlocal foldmethod=indent
-augroup end
+set foldmethod=indent            "Create folds on C-likes
+set foldlevel=999                "Start vim with all folds open
 
 
 "===[ Show undesirable hidden characters ]==="
@@ -190,7 +187,10 @@ augroup END
 
 
 "===[ Tags ]==="
-command! Maketags !ctags -R .
+nnoremap <Leader>tt :!ctags -Ra .<CR>
+set tags=./tags;,tags;
+nnoremap <Leader>tj :tjump /
+nnoremap <Leader>tp :ptjump /
 
 
 "===[ Backups and Undos ]==="
