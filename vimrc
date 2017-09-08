@@ -21,8 +21,6 @@ nnoremap <F6> :Gvdiff<CR>
 nnoremap <F7> :Gwrite<CR>
 nnoremap <F8> :Gcommit<CR>
 
-Plug 'ervandew/supertab'
-
 Plug 'romainl/vim-cool'
 
 if v:version >= 800
