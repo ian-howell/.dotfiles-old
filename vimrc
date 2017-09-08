@@ -228,9 +228,12 @@ nnoremap <Leader>cp :cprevious<CR>
 nnoremap <Leader>cc :call asyncrun#quickfix_toggle(8)<cr>
 
 "===[ Skeleton files ]==="
-" For now, I'll only support my LaTeX skeleton
 augroup skeletons
-  autocmd BufNewFile *.tex 0r ~/.vim/skeletons/skeleton.tex
+  autocmd!
+  autocmd BufNewFile main.* silent! execute '0r ~/.vim/skeletons/skeleton-main.' . expand("<afile>:e")
+  autocmd BufNewFile *.* silent! execute '0r ~/.vim/skeletons/skeleton.' . expand("<afile>:e")
+
+  autocmd BufNewFile * %substitute#\[:VIM_EVAL:\]\(.\{-\}\)\[:END_EVAL:\]#\=eval(submatch(1))#ge
 augroup END
 
 
