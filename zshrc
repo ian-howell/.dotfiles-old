@@ -7,6 +7,10 @@ export ZSH=/home/ian/.oh-my-zsh
 # ZSH_THEME="robbyrussell"
 ZSH_THEME="agnoster"
 
+# Don't show the full 'ian@hostname'
+DEFAULT_USER="ian"
+prompt_context(){}
+
 # Use case-sensitive completion.
 CASE_SENSITIVE="true"
 
