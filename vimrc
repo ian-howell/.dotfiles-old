@@ -147,7 +147,13 @@ inoremap <F1> <Esc>
 inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
 
 "Compile latex
-nnoremap <Leader>tex :AsyncRun pdflatex %<CR>
+augroup autocompile_latex
+  autocmd!
+  autocmd BufWritePost *.tex AsyncRun pdflatex '%'
+augroup END
+
+"Run a python file
+nnoremap <Leader>rp :AsyncRun! python3 %<CR>
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
