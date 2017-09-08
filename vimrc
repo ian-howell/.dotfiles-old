@@ -2,6 +2,7 @@
 call plug#begin()
 
 Plug 'altercation/vim-colors-solarized'
+Plug 'udalov/kotlin-vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
