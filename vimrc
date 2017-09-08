@@ -205,6 +205,9 @@ set undodir=$HOME/.vim/undo
 
 
 "===[ File navigation ]==="
+"Allow changed buffers to be hidden
+set hidden
+
 "Recursively search current directory
 set path+=**
 
