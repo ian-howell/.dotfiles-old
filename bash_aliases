@@ -1,5 +1,6 @@
 # Use python3 by default
 alias python=python3
+alias pdb=pdb3
 # Because I suck at keyboards
 alias pyhton=python3
 
@@ -46,3 +47,6 @@ alias :wq=exit
 
 # Ignore binaries/directories
 alias grep="grep -IHdskip --color=auto"
+
+# Colorful trees
+alias treec="tree -C | less -R"
