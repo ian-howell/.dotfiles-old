@@ -25,6 +25,9 @@ Plug 'romainl/vim-cool'
 
 if v:version >= 800
     Plug 'skywind3000/asyncrun.vim'
+    Plug 'w0rp/ale'
+    let g:ale_python_flake8_executable = 'python3'
+    let g:ale_python_flake8_options = '-m flake8'
 endif
 
 call plug#end()
