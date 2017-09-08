@@ -34,11 +34,7 @@ source $ZSH/oh-my-zsh.sh
 export MANPATH="/usr/local/man:$MANPATH"
 
 # Preferred editor for local and remote sessions
-if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
-else
-  export EDITOR='gvim'
-fi
+export EDITOR='vim'
 
 if [ -f ~/.sh_aliases ]; then
     . ~/.sh_aliases
