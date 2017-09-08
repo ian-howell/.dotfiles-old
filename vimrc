@@ -248,7 +248,14 @@ augroup skeletons
 augroup END
 
 
-"===[ Unsorted ]==="
+"===[ Wildmenu ]==="
 set wildmenu
 set wildmode=full
+set wildignore+=*.o,*.so
+set wildignore+=*.aux,*.out,*.pdf
+set wildignore+=*.pyc,__pycache__
+set wildignore+=*.tar,*.gz,*.zip,*.bzip,*.bz2
+
+
+"===[ Unsorted ]==="
 set noswapfile
