@@ -10,8 +10,8 @@ alias glo="git log"
 alias gbr="git branch"
 alias gdi="git diff"
 
-# ls with color
-alias ls='ls --color=auto -h'
+# verbose ls with color
+alias ls='ls --color=auto -hl'
 
 # Hidden files
 alias lsa="ls -a"
