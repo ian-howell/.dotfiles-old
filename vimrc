@@ -11,15 +11,10 @@ Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
 Plug 'wellle/targets.vim'
 
+Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 "Make Git gutter work faster
 set updatetime=250
-
-Plug 'tpope/vim-fugitive'
-nnoremap <F5> :Gstatus<CR>
-nnoremap <F6> :Gvdiff<CR>
-nnoremap <F7> :Gwrite<CR>
-nnoremap <F8> :Gcommit<CR>
 
 Plug 'romainl/vim-cool'
 
@@ -168,6 +163,22 @@ nnoremap <Leader>rp :AsyncRun python3 %<CR>
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
+
+"fugitive.vim mappings
+nnoremap <Leader>gst :Gstatus<CR>
+nnoremap <Leader>glo :Glog -10<CR>
+nnoremap <Leader>gdi :Gvdiff<CR>
+nnoremap <Leader>gad :Gwrite<CR>
+nnoremap <Leader>gre :Gread<CR>
+nnoremap <Leader>gco :Gcommit<CR>
+nnoremap <Leader>ged :Gedit<CR>
+
+"Mappings for working with diffs
+nnoremap <Leader>do :diffget<CR>
+xnoremap <Leader>do :diffget<CR>
+nnoremap <Leader>dp :diffput<CR>
+xnoremap <Leader>dp :diffput<CR>
+
 
 "===[ Statusline ]==="
 set laststatus=2                             "Always show the status line
