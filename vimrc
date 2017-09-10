@@ -164,7 +164,7 @@ augroup autocompile_latex
 augroup END
 
 "Run a python file
-nnoremap <Leader>rp :AsyncRun! python3 %<CR>
+nnoremap <Leader>rp :AsyncRun python3 %<CR>
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
