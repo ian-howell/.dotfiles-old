@@ -71,7 +71,10 @@ set expandtab          "Turns tabs into spaces
 set autoindent         "Keep the same indentation level when inserting a new line
 set smartindent        "Add proper indentation for code, eg insert a tab after a '{' character
 
-autocmd FileType make setlocal noexpandtab          "Use tabs in makefiles
+augroup make_file
+    autocmd!
+    autocmd FileType make setlocal noexpandtab          "Use tabs in makefiles
+augroup END
 
 inoremap # X#|       "Because indent is retarded with Python comments...
 
