@@ -33,6 +33,14 @@ endif
 call plug#end()
 "End Plugins
 
+
+"===[ (Just kidding) ]==="
+"For filestype specific things (like syntax highlighting)
+filetype plugin indent on
+"For more matching. See :h matchit
+runtime macros/matchit.vim
+
+
 "===[ Set Leader ]==="
 let mapleader=" "|              "Set leader key to the spacebar
 
