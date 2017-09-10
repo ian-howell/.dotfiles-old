@@ -12,7 +12,7 @@ DEFAULT_USER="ian"
 prompt_context(){}
 
 # Use case-sensitive completion.
-CASE_SENSITIVE="true"
+# CASE_SENSITIVE="true"
 
 # Make - and _ interchangeable
 HYPHEN_INSENSITIVE="true"
