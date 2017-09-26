@@ -159,7 +159,8 @@ augroup autocompile_latex
 augroup END
 
 "Run a python file
-nnoremap <Leader>rp :AsyncRun python3 %<CR>
+"TODO: Write a function that uses this mapping for multiple filetypes
+nnoremap <F5> :AsyncRun python3 %<CR>
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
