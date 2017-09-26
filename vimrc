@@ -238,7 +238,7 @@ set undodir=$HOME/.vim/undo
 set hidden
 
 "Recursively search current directory
-set path+=**
+set path=.,,**
 
 "Shortcut to find files
 nnoremap <Leader>ff :find *
@@ -250,7 +250,7 @@ nnoremap <Leader>b :ls<CR>:b<space>
 
 
 "===[ Grep customization ]==="
-set grepprg=grep\ -nrsHI
+let &grepprg='grep -nrsHI --exclude=tags --exclude-dir=\*venv\* --exclude-dir=.git'
 nnoremap <Leader>/ :AsyncRun! -post=botright\ copen -program=grep<space>
 nnoremap <Leader>* :AsyncRun! -post=botright\ copen -program=grep <cword><CR>
 
@@ -277,6 +277,8 @@ set wildignore+=*.o,*.so
 set wildignore+=*.aux,*.out,*.pdf
 set wildignore+=*.pyc,__pycache__
 set wildignore+=*.tar,*.gz,*.zip,*.bzip,*.bz2
+set wildignore+=tags
+set wildignore+=/home/**/*venv*/**
 
 
 "===[ Unsorted ]==="
