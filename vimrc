@@ -158,9 +158,16 @@ augroup autocompile_latex
   autocmd BufWritePost *.tex AsyncRun pdflatex '%'
 augroup END
 
-"Run a python file
-"TODO: Write a function that uses this mapping for multiple filetypes
-nnoremap <F5> :AsyncRun python3 %<CR>
+"Build or run a project
+function! Build()
+    if &filetype == "python"
+        :AsyncRun python3 %
+    elseif &filetype == "cpp" || &filetype == "c"
+        :AsyncRun -program=make
+    endif
+endfunction
+nnoremap <F5> :call Build()<CR>
+
 
 "Remove all trailing whitespace from a file
 nnoremap <Leader>ws :%s/\s\+$//<CR>``
