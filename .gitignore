@@ -7,3 +7,6 @@ vim/plugged/
 
 # Changes to the config directory
 config/
+
+# Tags. Because for some reason I need that in my .dotfiles :eye-roll:
+tags
