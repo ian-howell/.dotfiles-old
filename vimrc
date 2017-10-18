@@ -287,6 +287,7 @@ set wildignore+=*.pyc,__pycache__
 set wildignore+=*.tar,*.gz,*.zip,*.bzip,*.bz2
 set wildignore+=tags
 set wildignore+=/home/**/*venv*/**
+set wildignore+=*.class
 
 
 "===[ Unsorted ]==="
