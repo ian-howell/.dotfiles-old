@@ -133,6 +133,8 @@ inoremap Jk <ESC>
 cnoremap Jk <C-c>
 inoremap JK <ESC>
 cnoremap JK <C-c>
+inoremap jK <ESC>
+cnoremap jK <C-c>
 
 inoremap <F1> <ESC>|            "Disable help screen on F1. Change it to <ESC>
 
