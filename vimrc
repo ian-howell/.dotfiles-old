@@ -183,10 +183,8 @@ nnoremap <Leader>gre :Gread<CR>
 nnoremap <Leader>gco :Gcommit<CR>
 nnoremap <Leader>ged :Gedit<CR>
 
-"Mappings for working with diffs
-nnoremap <Leader>do :diffget<CR>
+"Mappings for working with diffs in visual mode
 xnoremap <Leader>do :diffget<CR>
-nnoremap <Leader>dp :diffput<CR>
 xnoremap <Leader>dp :diffput<CR>
 
 
