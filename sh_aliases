@@ -6,6 +6,7 @@ alias pyhton=python3
 
 # Git aliases
 alias gst="git status"
+alias gs="git status" # Because I constantly mistype this one
 alias glo="git log"
 alias gbr="git branch"
 alias gdi="git diff"
