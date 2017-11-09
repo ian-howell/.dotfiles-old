@@ -230,7 +230,7 @@ augroup END
 
 
 "===[ Tags ]==="
-nnoremap <Leader>tt :AsyncRun ctags -Ra .<CR>
+nnoremap <Leader>tt :AsyncRun ctags -R .<CR>
 set tags=./tags;,tags;
 nnoremap <Leader>tj :tjump /
 nnoremap <Leader>tp :ptjump /
