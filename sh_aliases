@@ -8,8 +8,10 @@ alias pyhton=python3
 alias gst="git status"
 alias gs="git status" # Because I constantly mistype this one
 alias glo="git log"
+alias glor="git log --color=always --oneline | head"
 alias gbr="git branch"
 alias gdi="git diff"
+alias gca="git commit --amend --no-edit"
 
 # verbose ls with color
 alias ls='ls --color=auto -hl'
@@ -39,6 +41,11 @@ else
   alias vim="vim -O"
   alias cim="vim -O"
 fi
+
+# More mistyping fixes
+alias valrgind=valgrind
+alias valigrnd=valgrind
+alias val=valgrind
 
 # Open in default without needing that dumb hyphen
 alias dopen="xdg-open"

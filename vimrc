@@ -6,7 +6,6 @@ Plug 'udalov/kotlin-vim'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
-Plug 'bling/vim-airline'
 Plug 'tpope/vim-commentary'
 Plug 'einfachtoll/didyoumean'
 Plug 'wellle/targets.vim'
@@ -17,12 +16,19 @@ Plug 'airblade/vim-gitgutter'
 set updatetime=250
 
 Plug 'romainl/vim-cool'
+" Plug 'romainl/vim-qf'
+" Don't open the quickfix window automatically
+let g:qf_auto_open_quickfix = 0
+Plug 'tpope/vim-unimpaired'
+
+Plug 'jsfaint/gen_tags.vim'
 
 if v:version >= 800
     Plug 'skywind3000/asyncrun.vim'
     Plug 'w0rp/ale'
     let g:ale_python_flake8_executable = 'python3'
     let g:ale_python_flake8_options = '-m flake8'
+    let g:ale_linters = {'go': ['go build', 'gofmt', 'golint']}
 endif
 
 call plug#end()
@@ -140,7 +146,8 @@ inoremap <F1> <ESC>|            "Disable help screen on F1. Change it to <ESC>
 
 nnoremap <Leader>s :source ~/.vimrc<CR>|     "Quickly source vimrc
 
-inoremap {{ {<CR>}<ESC>kA|                   "Fast bracketing
+" inoremap {{ {<CR>}<ESC>kA|                   "Fast bracketing
+inoremap {{ {<CR>}<UP><END>
 
 nnoremap Y y$|                  "Yank to EOL like it should
 nnoremap <Leader>y "+y|         "Copy to system clipboard from normal mode
@@ -157,7 +164,7 @@ inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
 "Compile latex
 augroup autocompile_latex
   autocmd!
-  autocmd BufWritePost *.tex AsyncRun pdflatex '%'
+  autocmd BufWritePost *.tex AsyncRun pdflatex -output-directory '%:h' '%'
 augroup END
 
 "Build or run a project
@@ -205,8 +212,13 @@ iabbrev              ;t           't
 
 command! W w
 command! Q q
+command! QA qa
+command! Qa qa
+command! W w
 command! WQ wq
 command! Wq wq
+command! WQa wqa
+command! Wqa wqa
 
 
 "===[ Folds ]==="
@@ -230,8 +242,14 @@ augroup END
 
 
 "===[ Tags ]==="
-nnoremap <Leader>tt :AsyncRun ctags -R .<CR>
 set tags=./tags;,tags;
+" Disable gtags support
+let g:loaded_gentags#gtags = 1
+" Generate tags automatically (if using git)
+let g:gen_tags#ctags_auto_gen = 1
+" Use git/tags_dir if using git
+let g:gen_tags#use_cache_dir = 0
+nnoremap <Leader>tt :GenCtags<CR>
 nnoremap <Leader>tj :tjump /
 nnoremap <Leader>tp :ptjump /
 
@@ -282,6 +300,7 @@ augroup END
 set wildmenu
 set wildmode=full
 set wildignore+=*.o,*.so
+set wildignore+=*.d
 set wildignore+=*.aux,*.out,*.pdf
 set wildignore+=*.pyc,__pycache__
 set wildignore+=*.tar,*.gz,*.zip,*.bzip,*.bz2

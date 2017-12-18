@@ -20,3 +20,13 @@ fi
 if [ -d "$HOME/bin" ] ; then
     PATH="$HOME/bin:$PATH"
 fi
+
+# set GOPATH if it exists
+if [ -d "/usr/local/go" ] ; then
+    export GOROOT="/usr/local/go"
+    export PATH="$PATH:$GOROOT/bin"
+fi
+
+if [ -d "/home/ian/workspaces/go" ] ; then
+    export GOPATH="/home/ian/workspaces/go"
+fi
