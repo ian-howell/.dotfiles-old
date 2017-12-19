@@ -2,7 +2,7 @@
 call plug#begin()
 
 Plug 'altercation/vim-colors-solarized'
-Plug 'udalov/kotlin-vim'
+Plug 'fatih/vim-go'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -227,8 +227,8 @@ set foldlevel=999                "Start vim with all folds open
 
 
 "===[ Show undesirable hidden characters ]==="
-" (uBB is right double angle, uB7 is middle dot)
-exec "set lcs=tab:\uBB\uBB,trail:\uB7,nbsp:~"
+set listchars=tab:│\ ,trail:·,nbsp:~
+highlight clear SpecialKey
 
 augroup VisibleNaughtiness
     autocmd!
