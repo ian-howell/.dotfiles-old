@@ -5,10 +5,10 @@
 
 ########## Variables
 
-ARTIFACT_DIR = $HOME/setup_artifacts
+ARTIFACT_DIR=$HOME/setup_artifacts
 
-DOTFILES = $HOME/.dotfiles
-VIM_ARTIFACTS = $ARTIFACT_DIR/vim_artifacts
+DOTFILES=$HOME/.dotfiles
+VIM_ARTIFACTS=$ARTIFACT_DIR/vim_artifacts
 
 ##########
 
@@ -23,6 +23,13 @@ fi
 cd $ARTIFACT_DIR
 
 echo "Setting up Vim"
+
+vim_exists=$(command -v vim)
+
+if [ $vim_exists -eq 0 ]; then
+    apt-get remove vim
+fi
+
 if [ -e $VIM_ARTIFACTS ]; then
     mkdir $VIM_ARTIFACTS
 fi
