@@ -271,8 +271,10 @@ nnoremap <space>ff :find *
 nnoremap <space>fs :sfind *
 nnoremap <space>fv :vert sfind *
 
-"Shortcut to show buffers
-nnoremap <space>b :ls<CR>:b<space>
+"Shortcut to find buffers
+nnoremap <space>bb :buffer *
+nnoremap <space>bs :sbuffer *
+nnoremap <space>bv :vert sbuffer *
 
 
 "===[ Grep customization ]==="
