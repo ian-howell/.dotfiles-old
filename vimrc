@@ -53,7 +53,7 @@ set backspace=indent,eol,start
 "===[ Colors ]==="
 syntax enable
 
-colorscheme solarized
+silent! colorscheme solarized
 set background=dark
 let g:solarized_termcolors=256
 if $COLORTERM == 'gnome-terminal'
