@@ -7,13 +7,10 @@
 
 ARTIFACT_DIR = $HOME/setup_artifacts
 
+DOTFILES = $HOME/.dotfiles
 VIM_ARTIFACTS = $ARTIFACT_DIR/vim_artifacts
 
 ##########
-
-# Do this before moving into the artifacts directory
-echo "Setting up dotfiles"
-source setup_dotfiles.sh
 
 echo "Setting up essentials"
 apt-get -q=2 update
@@ -42,3 +39,10 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 vim +PlugInstall +qall
 cd $ARTIFACT_DIR
+
+# Set up my dotfiles
+if [ -e $DOTFILES ]; then
+    git clone https://github.com/ian-howell/.dotfiles.git $DOTFILES
+fi
+cd $DOTFILES
+source setup_dotfiles.sh
