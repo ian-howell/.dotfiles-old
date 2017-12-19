@@ -17,7 +17,7 @@ apt-get -q=2 update
 apt-get -q=2 install curl git make
 
 # Create a directory to hold the artifacts from the setup process
-if [ -e $ARTIFACT_DIR ]; then
+if [ ! -e $ARTIFACT_DIR ]; then
     mkdir $ARTIFACT_DIR
 fi
 cd $ARTIFACT_DIR
@@ -26,11 +26,11 @@ echo "Setting up Vim"
 
 vim_exists=$(command -v vim)
 
-if [ $vim_exists -eq 0 ]; then
+if [ ! $vim_exists -eq 0 ]; then
     apt-get remove vim
 fi
 
-if [ -e $VIM_ARTIFACTS ]; then
+if [ ! -e $VIM_ARTIFACTS ]; then
     mkdir $VIM_ARTIFACTS
 fi
 cd $VIM_ARTIFACTS
@@ -48,7 +48,7 @@ vim +PlugInstall +qall
 cd $ARTIFACT_DIR
 
 # Set up my dotfiles
-if [ -e $DOTFILES ]; then
+if [ ! -e $DOTFILES ]; then
     git clone https://github.com/ian-howell/.dotfiles.git $DOTFILES
 fi
 cd $DOTFILES
