@@ -75,6 +75,6 @@ source setup_dotfiles.sh
 
 # Get compiz
 echo "Getting Compiz"
-apt-get install compiz compizconfig-settings-manager compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-plugins
+apt-get -y install compiz compizconfig-settings-manager
 mkdir -p $COMPIZ_CONFIG_DIR
 cp $DOTFILES/compiz_profile.bak $COMPIZ_CONFIG_DIR/Default.ini
