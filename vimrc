@@ -128,7 +128,7 @@ set splitright       "Put vertical splits on the right rather than the left
 set splitbelow       "Put horizontal splits on the bottom rather than the top
 
 "Mapping for more convenient 'window mode'
-nnoremap <Leader>w <C-w>
+nnoremap <space>w <C-w>
 
 
 "===[ Miscellaneous key mappings ]==="
@@ -144,17 +144,17 @@ cnoremap jK <C-c>
 
 inoremap <F1> <ESC>|            "Disable help screen on F1. Change it to <ESC>
 
-nnoremap <Leader>s :source ~/.vimrc<CR>|     "Quickly source vimrc
+nnoremap <space>s :source ~/.vimrc<CR>|     "Quickly source vimrc
 
 " inoremap {{ {<CR>}<ESC>kA|                   "Fast bracketing
 inoremap {{ {<CR>}<UP><END>
 
 nnoremap Y y$|                  "Yank to EOL like it should
-nnoremap <Leader>y "+y|         "Copy to system clipboard from normal mode
-xnoremap <Leader>y "+y|         "Copy to system clipboard from visual mode
-nnoremap <Leader>p "+p|         "Paste from system clipboard in normal mode
-nnoremap <Leader>P "+P|         "Paste from system clipboard in normal mode
-xnoremap <Leader>p "+p|         "Paste from system clipboard in visual mode
+nnoremap <space>y "+y|         "Copy to system clipboard from normal mode
+xnoremap <space>y "+y|         "Copy to system clipboard from visual mode
+nnoremap <space>p "+p|         "Paste from system clipboard in normal mode
+nnoremap <space>P "+P|         "Paste from system clipboard in normal mode
+xnoremap <space>p "+p|         "Paste from system clipboard in visual mode
 
 nnoremap <F1> <Esc>              "Disable help screen on F1
 inoremap <F1> <Esc>
@@ -179,20 +179,20 @@ nnoremap <F5> :call Build()<CR>
 
 
 "Remove all trailing whitespace from a file
-nnoremap <Leader>ws :%s/\s\+$//<CR>``
+nnoremap <space>ws :%s/\s\+$//<CR>``
 
 "fugitive.vim mappings
-nnoremap <Leader>gst :Gstatus<CR>
-nnoremap <Leader>glo :Glog -10<CR>
-nnoremap <Leader>gdi :Gvdiff<CR>
-nnoremap <Leader>gad :Gwrite<CR>
-nnoremap <Leader>gre :Gread<CR>
-nnoremap <Leader>gco :Gcommit<CR>
-nnoremap <Leader>ged :Gedit<CR>
+nnoremap <space>gst :Gstatus<CR>
+nnoremap <space>glo :Glog -10<CR>
+nnoremap <space>gdi :Gvdiff<CR>
+nnoremap <space>gad :Gwrite<CR>
+nnoremap <space>gre :Gread<CR>
+nnoremap <space>gco :Gcommit<CR>
+nnoremap <space>ged :Gedit<CR>
 
 "Mappings for working with diffs in visual mode
-xnoremap <Leader>do :diffget<CR>
-xnoremap <Leader>dp :diffput<CR>
+xnoremap <space>do :diffget<CR>
+xnoremap <space>dp :diffput<CR>
 
 
 "===[ Statusline ]==="
@@ -249,9 +249,9 @@ let g:loaded_gentags#gtags = 1
 let g:gen_tags#ctags_auto_gen = 1
 " Use git/tags_dir if using git
 let g:gen_tags#use_cache_dir = 0
-nnoremap <Leader>tt :GenCtags<CR>
-nnoremap <Leader>tj :tjump /
-nnoremap <Leader>tp :ptjump /
+nnoremap <space>tt :GenCtags<CR>
+nnoremap <space>tj :tjump /
+nnoremap <space>tp :ptjump /
 
 
 "===[ Persistant Undos ]==="
@@ -267,24 +267,24 @@ set hidden
 set path=.,,**
 
 "Shortcut to find files
-nnoremap <Leader>ff :find *
-nnoremap <Leader>fs :sfind *
-nnoremap <Leader>fv :vert sfind *
+nnoremap <space>ff :find *
+nnoremap <space>fs :sfind *
+nnoremap <space>fv :vert sfind *
 
 "Shortcut to show buffers
-nnoremap <Leader>b :ls<CR>:b<space>
+nnoremap <space>b :ls<CR>:b<space>
 
 
 "===[ Grep customization ]==="
 let &grepprg='grep -nrsHI --exclude=tags --exclude-dir=\*venv\* --exclude-dir=.git'
-nnoremap <Leader>/ :AsyncRun! -post=botright\ copen -program=grep<space>
-nnoremap <Leader>* :AsyncRun! -post=botright\ copen -program=grep <cword><CR>
+nnoremap <space>/ :AsyncRun! -post=botright\ copen -program=grep<space>
+nnoremap <space>* :AsyncRun! -post=botright\ copen -program=grep <cword><CR>
 
 
 "===[ QuickFixList Shortcuts ]==="
-nnoremap <Leader>cn :cnext<CR>
-nnoremap <Leader>cp :cprevious<CR>
-nnoremap <Leader>cc :call asyncrun#quickfix_toggle(8)<cr>
+nnoremap <space>cn :cnext<CR>
+nnoremap <space>cp :cprevious<CR>
+nnoremap <space>cc :call asyncrun#quickfix_toggle(8)<cr>
 
 "===[ Skeleton files ]==="
 augroup skeletons
