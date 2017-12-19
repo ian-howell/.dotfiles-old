@@ -27,7 +27,7 @@ echo "Setting up Vim"
 
 vim_exists=$(command -v vim)
 
-if [ $vim_exists -eq "0" ]; then
+if [[ $vim_exists -eq 0 ]]; then
     apt-get remove vim
 fi
 
@@ -36,6 +36,9 @@ if [ ! -e $VIM_ARTIFACTS ]; then
 fi
 cd $VIM_ARTIFACTS
 # Get vim source
+if [ -e vim ]; then
+    rm -fr vim
+fi
 git clone https://github.com/vim/vim.git
 
 # Build and configure
