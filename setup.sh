@@ -21,7 +21,10 @@ fi
 
 echo "Setting up essentials"
 apt-get -q=2 update
-apt-get -q=2 install curl git make
+sudo apt install -q=2 libncurses5-dev libgnome2-dev libgnomeui-dev \
+    libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
+    libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
+    python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git curl make
 
 # Create a directory to hold the artifacts from the setup process
 if [ ! -e $ARTIFACT_DIR ]; then
@@ -34,7 +37,7 @@ echo "Setting up Vim"
 vim_exists=$(command -v vim)
 
 if [[ $vim_exists -eq 0 ]]; then
-    apt-get remove vim
+    apt-get remove vim vim-runtime gvim
 fi
 
 if [ ! -e $VIM_ARTIFACTS ]; then
@@ -51,6 +54,11 @@ git clone https://github.com/vim/vim.git
 cd vim/src
 make
 make install
+
+update-alternatives --install /usr/bin/editor editor /usr/bin/vim 1
+update-alternatives --set editor /usr/bin/vim
+update-alternatives --install /usr/bin/vi vi /usr/bin/vim 1
+update-alternatives --set vi /usr/bin/vim
 
 # Get and configure Vim-Plug
 curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
