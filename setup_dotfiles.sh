@@ -13,7 +13,9 @@ files="profile bashrc sh_aliases vim vimrc inputrc"    # list of files/folders t
 
 # create dotfiles_old in homedir
 echo "Creating $olddir for backup of any existing dotfiles in $HOME ..."
-mkdir -p $olddir
+if [ ! -e $olddir ]; then
+    mkdir -p $olddir
+fi
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory ..."
@@ -23,7 +25,7 @@ cd $dir
 echo "Moving any existing dotfiles from $HOME to $olddir"
 for file in $files; do
     if [ -e $HOME/.$file ]; then
-        mv $HOME/.$file $olddir
+        mv -f $HOME/.$file $olddir
     fi
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file $HOME/.$file
@@ -31,6 +33,8 @@ done
 
 # Create the vim directories
 echo "Creating vim backup directory ..."
-mkdir -p vim/undo
+if [ -e vim/undo ]; then
+    mkdir -p vim/undo
+fi
 
 echo "done"

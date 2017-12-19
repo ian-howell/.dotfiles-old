@@ -27,7 +27,7 @@ echo "Setting up Vim"
 
 vim_exists=$(command -v vim)
 
-if [ ! $vim_exists -eq 0 ]; then
+if [ $vim_exists -eq 0 ]; then
     apt-get remove vim
 fi
 
