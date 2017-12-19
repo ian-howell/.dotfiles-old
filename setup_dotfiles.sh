@@ -1,34 +1,36 @@
 #!/bin/bash
 ############################
-# This script creates symlinks from the home directory to any desired dotfiles in ~/.dotfiles
+# This script creates symlinks from the home directory to any desired dotfiles in $HOME/.dotfiles
 ############################
 
 ########## Variables
 
-dir=~/.dotfiles                    # dotfiles directory
-olddir=~/.dotfiles_old             # old dotfiles backup directory
-files="profile bashrc sh_aliases vim inputrc"    # list of files/folders to symlink in homedir
+dir=$HOME/.dotfiles                    # dotfiles directory
+olddir=$HOME/.dotfiles_old             # old dotfiles backup directory
+files="profile bashrc sh_aliases vim vimrc inputrc"    # list of files/folders to symlink in homedir
 
 ##########
 
 # create dotfiles_old in homedir
-echo -n "Creating $olddir for backup of any existing dotfiles in ~ ..."
+echo "Creating $olddir for backup of any existing dotfiles in $HOME ..."
 mkdir -p $olddir
 
 # change to the dotfiles directory
-echo -n "Changing to the $dir directory ..."
+echo "Changing to the $dir directory ..."
 cd $dir
 
-# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the ~/dotfiles directory specified in $files
-echo "Moving any existing dotfiles from ~ to $olddir"
+# move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks from the homedir to any files in the $HOME/dotfiles directory specified in $files
+echo "Moving any existing dotfiles from $HOME to $olddir"
 for file in $files; do
-  mv ~/.$file $olddir
-  echo "Creating symlink to $file in home directory."
-  ln -s $dir/$file ~/.$file
+    if [ -e $HOME/.$file ]; then
+        mv $HOME/.$file $olddir
+    fi
+    echo "Creating symlink to $file in home directory."
+    ln -s $dir/$file $HOME/.$file
 done
 
 # Create the vim directories
-echo -n "Creating vim backup directory ..."
+echo "Creating vim backup directory ..."
 mkdir -p vim/undo
 
 echo "done"
