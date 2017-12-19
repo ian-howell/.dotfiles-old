@@ -120,7 +120,7 @@ augroup END
 
 "== Columns =="
 set sidescroll=1                           "Set horizontal scroll speed
-execute "set colorcolumn=".join(range(80,335), ',')|   "Discolor every column past column 80
+set colorcolumn=80
 
 
 "=== [ Windows and splitting ]==="
