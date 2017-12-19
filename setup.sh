@@ -24,7 +24,7 @@ apt-get -y update
 apt-get -y install libncurses5-dev libgnome2-dev libgnomeui-dev \
     libgtk2.0-dev libatk1.0-dev libbonoboui2-dev \
     libcairo2-dev libx11-dev libxpm-dev libxt-dev python-dev \
-    python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git curl make
+    python3-dev ruby-dev lua5.1 lua5.1-dev libperl-dev git curl make ctags
 
 # Create a directory to hold the artifacts from the setup process
 if [ ! -e $ARTIFACT_DIR ]; then
@@ -75,6 +75,6 @@ source setup_dotfiles.sh
 
 # Get compiz
 echo "Getting Compiz"
-apt-get -y install compiz compizconfig-settings-manager
+apt-get -y install compiz
 mkdir -p $COMPIZ_CONFIG_DIR
 cp $DOTFILES/compiz_profile.bak $COMPIZ_CONFIG_DIR/Default.ini
