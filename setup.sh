@@ -9,6 +9,7 @@ ARTIFACT_DIR=$HOME/setup_artifacts
 
 DOTFILES=$HOME/.dotfiles
 VIM_ARTIFACTS=$ARTIFACT_DIR/vim_artifacts
+COMPIZ_CONFIG_DIR=$HOME/.config/compiz-1/compizconfig/
 
 ##########
 
@@ -38,6 +39,7 @@ cd $VIM_ARTIFACTS
 git clone https://github.com/vim/vim.git
 
 # Build and configure
+cd vim/src
 make
 make install
 
@@ -53,3 +55,9 @@ if [ ! -e $DOTFILES ]; then
 fi
 cd $DOTFILES
 source setup_dotfiles.sh
+
+# Get compiz
+echo "Getting Compiz"
+apt-get install compiz compizconfig-settings-manager compiz-fusion-plugins-extra compiz-fusion-plugins-main compiz-plugins
+mkdir -p $COMPIZ_CONFIG_DIR
+cp $DOTFILES/compiz_profile.bak $COMPIZ_CONFIG_DIR/Default.ini
