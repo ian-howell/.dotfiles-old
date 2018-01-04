@@ -28,8 +28,5 @@ profile: driver
 clean:
 	-@rm -f core
 	-@rm -f driver
-	-@rm -f "depend"
 	-@rm -f $(OBJECTS)
 	-@rm -f $(DEPS)
-	-@rm *.log
-	-@rm *.aux
