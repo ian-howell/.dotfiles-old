@@ -9,8 +9,9 @@ HEADERS = $(wildcard src/*.h)
 OBJECTS = $(SOURCES:%.cpp=%.o)
 DEPS := $(OBJECTS:%.o=%.d)
 
+EXECUTABLE = driver
 
-default: driver
+default: $(EXECUTABLE)
 
 -include $(DEPS)
 
@@ -18,15 +19,15 @@ default: driver
 	@echo "Compiling $<"
 	@$(CXX) -c $(CXXFLAGS) -MMD -o $@ $<
 
-driver: $(OBJECTS)
+$(EXECUTABLE): $(OBJECTS)
 	@echo "Building $@"
 	@$(CXX) $(CXXFLAGS) $(OBJECTS) -o $@
 
 profile: CXXFLAGS = -g -Wall -w -pedantic-errors -Wextra -Wconversion -std=c++11 -pg
-profile: driver
+profile: $(EXECUTABLE)
 
 clean:
 	-@rm -f core
-	-@rm -f driver
+	-@rm -f $(EXECUTABLE)
 	-@rm -f $(OBJECTS)
 	-@rm -f $(DEPS)
