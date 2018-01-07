@@ -32,15 +32,9 @@ alias cp="cp -i"
 # Easy shutdown
 alias die="sudo poweroff now"
 
-# Vim auto window splitter
-if [ -e /usr/bin/nvim ]
-then
-  alias vim="nvim -O"
-  alias cim="nvim -O"
-else
-  alias vim="vim -O"
-  alias cim="vim -O"
-fi
+# Vim aliases
+alias vi="vim"
+alias cim="vim"
 
 # More mistyping fixes
 alias valrgind=valgrind
