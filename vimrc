@@ -192,10 +192,34 @@ xnoremap <space>dp :diffput<CR>
 
 
 "===[ Statusline ]==="
-set laststatus=2                             "Always show the status line
-set statusline=%<%f\ %y%m%r%=%-14.(%l,%c%V%)\ %P
-set statusline+=%#warningmsg#
-set statusline+=%*
+"Always show the status line
+set laststatus=2
+
+"Custom modified flag
+function! Modified()
+  if &modified
+    return "  ∆ "
+  elseif !&modifiable
+    return "  ✗ "
+  else
+    return "    "
+  endif
+endfunction
+
+"Setup custom colors
+hi User1 ctermbg=NONE cterm=bold
+hi User2 ctermbg=black
+
+set statusline=                 "Start empty
+set statusline+=%2*             "Change color
+set statusline+=%{Modified()}   "Mark whether the file is modified, unmodified, or unmobifiable
+set statusline+=%1*             "Change color
+set statusline+=\ 〔%f〕        "File name
+set statusline+=%=              "Switch to the right side
+set statusline+=%2*             "Change color
+set statusline+=\ %3.c          "Current column
+set statusline+=\ %P            "Percentage through file
+set statusline+=\ %y            "Filetype
 
 
 "===[ Fix misspellings on the fly ]==="
