@@ -123,3 +123,6 @@ function kg++ { g++ -g -O2 -static -std=gnu++11 "$@"; }
 
 # Turn on vi-mode
 set -o vi
+
+# Change the terminal to have nicer colors
+TERM=xterm-256color

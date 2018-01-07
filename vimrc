@@ -1,7 +1,7 @@
 " Plugins
 call plug#begin()
 
-Plug 'altercation/vim-colors-solarized'
+Plug 'romainl/apprentice'
 Plug 'fatih/vim-go'
 
 Plug 'tpope/vim-surround'
@@ -52,16 +52,12 @@ set backspace=indent,eol,start
 
 "===[ Colors ]==="
 syntax enable
+colorscheme apprentice
 
-silent! colorscheme solarized
-set background=dark
-let g:solarized_termcolors=256
-if $COLORTERM == 'gnome-terminal'
-  set t_Co=256
-endif
 
 "===[ Search behaviour ]==="
 set incsearch                        "Lookahead as search pattern is specified
+
 
 "===[ Tab behaviour ]==="
 set tabstop=4          "Tabs are equal to 2 spaces
