@@ -18,9 +18,11 @@ Plug 'jsfaint/gen_tags.vim'
 
 if v:version >= 800
     Plug 'skywind3000/asyncrun.vim'
+
     Plug 'w0rp/ale'
-    let g:ale_python_flake8_executable = 'python3'
-    let g:ale_python_flake8_options = '-m flake8'
+    "Custom signs for gutter
+    let g:ale_sign_error = "✗"
+    let g:ale_sign_warning = "▲"
 endif
 
 call plug#end()
