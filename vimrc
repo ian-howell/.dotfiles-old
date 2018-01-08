@@ -2,7 +2,6 @@
 call plug#begin()
 
 Plug 'romainl/apprentice'
-Plug 'fatih/vim-go'
 
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
@@ -12,11 +11,8 @@ Plug 'wellle/targets.vim'
 
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
-"Make Git gutter work faster
-set updatetime=250
 
 Plug 'romainl/vim-qf'
-Plug 'tpope/vim-unimpaired'
 
 Plug 'jsfaint/gen_tags.vim'
 
@@ -25,22 +21,15 @@ if v:version >= 800
     Plug 'w0rp/ale'
     let g:ale_python_flake8_executable = 'python3'
     let g:ale_python_flake8_options = '-m flake8'
-    let g:ale_linters = {'go': ['go build', 'gofmt', 'golint']}
 endif
 
 call plug#end()
-"End Plugins
 
-
-"===[ (Just kidding) ]==="
 "For filestype specific things (like syntax highlighting)
 filetype plugin indent on
 "For more matching. See :h matchit
 runtime macros/matchit.vim
-
-
-"===[ Set Leader ]==="
-let mapleader=" "|              "Set leader key to the spacebar
+"End Plugins
 
 
 "===[ Sane backspace ]==="
@@ -63,29 +52,11 @@ set shiftround         "Indents always land on a multiple of shiftwidth
 set smarttab           "Backspace deletes a shiftwidth's worth of spaces
 set expandtab          "Turns tabs into spaces
 set autoindent         "Keep the same indentation level when inserting a new line
-set smartindent        "Add proper indentation for code, eg insert a tab after a '{' character
-
-augroup make_file
-    autocmd!
-    autocmd FileType make setlocal noexpandtab          "Use tabs in makefiles
-augroup END
-
-inoremap # X#|       "Because indent is retarded with Python comments...
 
 
 "===[ Line and column display settings ]==="
 "== Lines =="
 set nowrap             "Don't word wrap
-"Unless it's a LaTeX or txt file
-augroup line_wrapper
-    autocmd!
-    autocmd FileType tex,text,markdown setlocal wrap
-    autocmd FileType tex,text,markdown nnoremap j gj
-    autocmd FileType tex,text,markdown nnoremap k gk
-    autocmd FileType tex,text,markdown xnoremap j gj
-    autocmd FileType tex,text,markdown xnoremap k gk
-augroup END
-set textwidth=0        "Don't automatically insert linebreaks
 set relativenumber     "Give a relative number of lines from the cursor
 set number             "Show the cursor's current line
 set scrolloff=2        "Scroll when 2 lines from top/bottom
@@ -93,22 +64,17 @@ set scrolloff=2        "Scroll when 2 lines from top/bottom
 "Only turn on relative numbers in the active window
 augroup active_relative_number
     autocmd!
-    autocmd WinEnter * :setlocal number relativenumber
-    autocmd WinLeave * :setlocal norelativenumber
+    autocmd WinEnter * setlocal number relativenumber
+    autocmd WinLeave * setlocal norelativenumber
 augroup END
 
 "Highlight the current line
-"    Only highlights the active window, and only when vim is in focus
 set cursorline
+"Only highlight the active window
 augroup highlight_follows_focus
     autocmd!
     autocmd WinEnter * setlocal cursorline
     autocmd WinLeave * setlocal nocursorline
-augroup END
-augroup highlight_follows_vim
-    autocmd!
-    autocmd FocusGained * setlocal cursorline
-    autocmd FocusLost * setlocal nocursorline
 augroup END
 
 "== Columns =="
@@ -135,30 +101,26 @@ cnoremap JK <C-c>
 inoremap jK <ESC>
 cnoremap jK <C-c>
 
-inoremap <F1> <ESC>|            "Disable help screen on F1. Change it to <ESC>
-
 nnoremap <space>s :source ~/.vimrc<CR>|     "Quickly source vimrc
 
-" inoremap {{ {<CR>}<ESC>kA|                   "Fast bracketing
+"Fast bracketing (repeatable)
 inoremap {{ {<CR>}<UP><END>
 
-nnoremap Y y$|                  "Yank to EOL like it should
-nnoremap <space>y "+y|         "Copy to system clipboard from normal mode
-xnoremap <space>y "+y|         "Copy to system clipboard from visual mode
-nnoremap <space>p "+p|         "Paste from system clipboard in normal mode
-nnoremap <space>P "+P|         "Paste from system clipboard in normal mode
-xnoremap <space>p "+p|         "Paste from system clipboard in visual mode
+"Yank to EOL like it should
+nnoremap Y y$
+"Copy to system clipboard
+nnoremap <space>y "+y
+xnoremap <space>y "+y
+"Paste from system clipboard
+nnoremap <space>p "+p
+nnoremap <space>P "+P
+xnoremap <space>p "+p
 
-nnoremap <F1> <Esc>              "Disable help screen on F1
-inoremap <F1> <Esc>
+"Disable help screen on F1
+inoremap <F1> <ESC>
+nnoremap <F1> <Esc>
 
 inoremap <buffer> </ </<C-x><C-o>|           "Auto-close html tags
-
-"Compile latex
-augroup autocompile_latex
-  autocmd!
-  autocmd BufWritePost *.tex AsyncRun pdflatex -output-directory '%:h' '%'
-augroup END
 
 "Build or run a project
 function! Build()
@@ -166,10 +128,11 @@ function! Build()
         :AsyncRun python3 %
     elseif &filetype == "cpp" || &filetype == "c"
         :AsyncRun -program=make
+    elseif &filetype == "tex"
+        :AsyncRun pdflatex -output-directory '%:h' '%'
     endif
 endfunction
 nnoremap <F5> :call Build()<CR>
-
 
 "Remove all trailing whitespace from a file
 nnoremap <space>ws :%s/\s\+$//<CR>``
@@ -239,23 +202,19 @@ command! Wqa wqa
 
 
 "===[ Folds ]==="
-set foldmethod=indent            "Create folds on C-likes
+set foldmethod=indent            "Create folds on indentation
 set foldlevel=999                "Start vim with all folds open
 
 
 "===[ Show undesirable hidden characters ]==="
-set listchars=tab:│\ ,trail:·,nbsp:~
+"Show hidden characters
+if &modifiable
+  set list
+endif
+"Set tabs to a straight line followed by blanks and trailing spaces to dots
+set listchars=tab:│\ ,trail:·
+"Remove the background highlighting from the above special characters
 highlight clear SpecialKey
-
-augroup VisibleNaughtiness
-    autocmd!
-    autocmd BufEnter  *       setlocal list
-    autocmd BufEnter  *.txt   setlocal nolist
-    autocmd BufEnter  *.vp*   setlocal nolist
-    autocmd BufEnter  *       if !&modifiable
-    autocmd BufEnter  *           setlocal nolist
-    autocmd BufEnter  *       endif
-augroup END
 
 
 "===[ Tags ]==="
@@ -346,4 +305,5 @@ set wildignore+=%*
 
 
 "===[ Unsorted ]==="
+"Don't use swp files
 set noswapfile
