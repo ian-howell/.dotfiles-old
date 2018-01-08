@@ -301,6 +301,7 @@ set wildignore+=*.tar,*.gz,*.zip,*.bzip,*.bz2
 set wildignore+=tags
 set wildignore+=/home/**/*venv*/**
 set wildignore+=*.class
+set wildignore+=*.png,*.jpg,*.bmp,*.gif
 set wildignore+=%*
 
 
