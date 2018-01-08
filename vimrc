@@ -15,10 +15,7 @@ Plug 'airblade/vim-gitgutter'
 "Make Git gutter work faster
 set updatetime=250
 
-Plug 'romainl/vim-cool'
-" Plug 'romainl/vim-qf'
-" Don't open the quickfix window automatically
-let g:qf_auto_open_quickfix = 0
+Plug 'romainl/vim-qf'
 Plug 'tpope/vim-unimpaired'
 
 Plug 'jsfaint/gen_tags.vim'
@@ -303,10 +300,26 @@ nnoremap <space>/ :AsyncRun! -post=botright\ copen -program=grep<space>
 nnoremap <space>* :AsyncRun! -post=botright\ copen -program=grep <cword><CR>
 
 
-"===[ QuickFixList Shortcuts ]==="
-nnoremap <space>cn :cnext<CR>
-nnoremap <space>cp :cprevious<CR>
-nnoremap <space>cc :call asyncrun#quickfix_toggle(8)<cr>
+"===[ Quickfix and Location window Shortcuts ]==="
+nmap <space>qn <Plug>qf_qf_next
+nmap <space>qp <Plug>qf_qf_previous
+nmap <space>qq <Plug>qf_qf_switch
+nmap <space>qt <Plug>qf_qf_stay_toggle
+
+nmap <space>ln <Plug>qf_loc_next
+nmap <space>lp <Plug>qf_loc_previous
+nmap <space>lq <Plug>qf_loc_switch
+nmap <space>lt <Plug>qf_loc_stay_toggle
+
+"The following setting provides these commands from the quickfix and location windows
+" s - open entry in a new horizontal window
+" v - open entry in a new vertical window
+" t - open entry in a new tab
+" o - open entry and come back
+" O - open entry and close the location/quickfix window
+" p - open entry in a preview window
+let g:qf_mapping_ack_style = 1
+
 
 "===[ Skeleton files ]==="
 augroup skeletons
